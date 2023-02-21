@@ -10,7 +10,7 @@ const RowRandom = () =>{
     const [spinResult, setSpinResult] = useState([]);
     //хук который если запрос пришел isPostsLoading True если еще не пришел false
     // для проверки в html
-    const [fetchPost,isPostsLoading,posrError] = useFetching(async () => new Promise((resolve, reject) => {
+    const [fetchPost,isPostsLoading,posrError] = useFetching(() => new Promise((resolve, reject) => {
         const getItems = [{id:0,name:'name12345'},{id:1,name:'name1111'},
         {id:2,name:'name2222'},{id:3,name:'name3333'},
         {id:4,name:'name4444'},{id:5,name:'name5555'},
