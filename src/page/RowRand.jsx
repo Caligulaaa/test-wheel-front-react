@@ -3,7 +3,6 @@ import './CSSReact/style.css'
 import logo from './IMG/pointer.png'
 import { useFetching } from './useFetching';
 
-
 const RowRandom = () =>{
     const cells = 41
 
@@ -11,22 +10,19 @@ const RowRandom = () =>{
     const [spinResult, setSpinResult] = useState([]);
     //хук который если запрос пришел isPostsLoading True если еще не пришел false
     // для проверки в html
-    const [fetchPost,isPostsLoading,posrError] = useFetching(async() => {
-            //get request all items for speen 
-            const getItems = [{id:0,name:'name12345'},{id:1,name:'name1111'},
-                            {id:2,name:'name2222'},{id:3,name:'name3333'},
-                            {id:4,name:'name4444'},{id:5,name:'name5555'},
-                            {id:6,name:'name6666'},{id:7,name:'name7777'},
-                            {id:8,name:'name8888'},{id:9,name:'name9999'},
-                            {id:10,name:'name0000'},{id:11,name:'name54321'},]
-            // setTimeout(() => {
-            //     setallItems(allitems)
-            // }, 1000)
-            
-            setallItems(getItems)
-            //вот єту херню хз как закинуть что снизу если еще setTimeout будет как будто с запроса
-            // generateItems()
-      }) 
+    const [fetchPost,isPostsLoading,posrError] = useFetching(async () => new Promise((resolve, reject) => {
+        const getItems = [{id:0,name:'name12345'},{id:1,name:'name1111'},
+        {id:2,name:'name2222'},{id:3,name:'name3333'},
+        {id:4,name:'name4444'},{id:5,name:'name5555'},
+        {id:6,name:'name6666'},{id:7,name:'name7777'},
+        {id:8,name:'name8888'},{id:9,name:'name9999'},
+        {id:10,name:'name0000'},{id:11,name:'name54321'},];
+
+        setTimeout(() => {
+            setallItems(getItems);
+            resolve();
+        }, 1000)
+    }));
 
     
 
@@ -66,10 +62,18 @@ const RowRandom = () =>{
     }
 
     useEffect(() => {
+        
+
         // generateItems()
         fetchPost()
         
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        if(allItems?.length > 0) {
+            generateItems();
+        }
+    }, [allItems])
 
     
 
