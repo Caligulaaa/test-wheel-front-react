@@ -11,8 +11,8 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #4b7cbb;
-  color: rgb(236, 10, 10);
+  background: #438be4;
+  color: rgb(243, 8, 8);
 }
 
 
@@ -26,8 +26,12 @@
   position: absolute;
   z-index: 1;
   left: 50%;
-  transform: translate3d(-50%, -25px, 0);
   height: 50px;
+  width: 40px;
+  background: #ff2600;
+  position: absolute;
+  clip-path: polygon(100% 0,50% 100%,0 0);
+  transform: translate3d(-50%, -25px, 0);
   filter: drop-shadow(0 0 20px rgba(206, 47, 47, 0.3));
 }
 .apple .scope {
@@ -76,7 +80,7 @@
   border: none;
   border-radius: 5px;
   outline: none;
-  background: #ff3123;
+  background: #464040;
   color: inherit;
   font-size: 16px;
   font-weight: 500;
